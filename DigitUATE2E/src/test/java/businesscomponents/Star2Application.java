@@ -48,8 +48,7 @@ public class Star2Application extends ReusableLibrary {
      * @author Cognizant Team
      *
      */
-      FlipcartLoginPage flipcartlogin = new FlipcartLoginPage(scriptHelper);
-      FlipcartHomePage flipcarthome = new FlipcartHomePage(scriptHelper);
+     
    Star2LoginPage starlogin = new Star2LoginPage(scriptHelper);
     Star2HomePage starhome = new Star2HomePage(scriptHelper);
     
@@ -327,31 +326,10 @@ public class Star2Application extends ReusableLibrary {
     	Utility_Functions.xMouseClick(driver,Star2HomePage.logout);
     
     	report.updateTestLog("StarLogout", "Verify User is able to log out STAR2 application", Status.PASS);
-    }
-    public void flipcartLogout()
-    {
-    	Utility_Functions.xWaitForElementVisible(driver, FlipcartHomePage.optionmenu,80);
-    	Utility_Functions.xMoveToElment(FlipcartHomePage.optionmenu, driver);
-    	Utility_Functions.xMouseClick( driver,FlipcartHomePage.optionmenu);
-    	System.out.println("--------------inside logout method------");
-    	Utility_Functions.xWaitForElementVisible(driver, FlipcartHomePage.logout,80);
-    	Utility_Functions.xMoveToElment(FlipcartHomePage.logout, driver);
-    	System.out.println("--------------moved to element------");
-    	Utility_Functions.xMouseClick(driver,FlipcartHomePage.logout);
-    	Utility_Functions.xWaitForElementVisible(driver, FlipcartHomePage.login,80);
-    
-    	report.updateTestLog("FlipcartLogout", "Verify User is able to log out Flipcart application", Status.PASS);
-    }
-    
+    }    
     
     
     
 
     
-
-    
-
-    
-    
-
 }
