@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Execute UAT E2E Test Suites</title>
+<HTA:APPLICATION
+  APPLICATIONNAME="Run Exe or Batch files with Vbscript and HTA"
+  ID="MyHTMLapplication"
+  VERSION="1.0"/>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 40%;
+  padding: 1px;
+  height: 90px; /* Should be removed. Only for demonstration */
+}
+</style>
+</head>
+<body bgcolor="#FAF0E6">
+<script language="Vbscript">
+Dim Shell,path
+Function  RunMe(path)
+Set shell = CreateObject("WScript.Shell")
+
+shell.run path,1,false
+End Function  
+
+Function invCheck()
+path = "InvCheck.bat"
+RunMe(path)
+End Function
+
+Function Batch()
+path = "OrderCreation.bat"
+RunMe(path)
+End Function
+
+Function Batch1()
+path = "Orderfulfiment.bat"
+RunMe(path)
+End Function
+Function Batch2()
+path = "AtgRMSExt.bat"
+RunMe(path)
+End Function
+
+Function Batch3()
+path = "IntraDay.bat"
+RunMe(path)
+End Function
+
+Function Batch4()
+path = "ReSa.bat"
+RunMe(path)
+End Function
+Function Batch5()
+path = "FinalReport.bat"
+RunMe(path)
+End Function
+Function Batch6()
+path = "RMS.bat"
+RunMe(path)
+End Function
+Function Retrn()
+path = "Rtrn.bat"
+RunMe(path)
+End Function
+Function Batch7()
+path = "ExternalSys.bat"
+RunMe(path)
+End Function
+
+</script>
+<h2>Execution batch</h2>
+
+<p style="color:blue;"> Day 1 Batches </p>
+<tr>
+<td align="center">
+<input style="width: 150px; height:40px; color: white; background-color: #4CAF50; border-radius: 50px;
+font-family:Book Antiqua;" type="button" title=" Check Inventory and Increase in RMS, OMS, ATG , WMS " Value="InventoryAdjument" onClick="invCheck()">
+</td>
+<td align="center">
+<input style="width: 150px; height:40px; color: white; background-color: #4CAF50; border-radius: 50px;
+font-family:Book Antiqua;" type="button" title=" Check Inventory and Create Ecom Order  " Value="Execute OrderCreation" onClick="Batch()">
+</td>
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button"title=" Order in Respecctive DC WMS  " Value="SOM Order Fulfillment" onClick="Batch1()">
+</td>
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Validate Order Details in ATG CSC  " Value="Execute ATGCSC Validation" onClick="Batch2()">
+</td>
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Receive Return in DC " Value="ReceiveReturn" onClick="Retrn()">
+</td>
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Validate Order detail table in RMS " Value="Execute RMSValidation " onClick="Batch6()">
+</td>
+<p style="color:blue;">  </p>
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Validate Tender details in respective External Systems  " Value="Execute ExternalSys" onClick="Batch7()">
+</td>
+<td align="center">
+<input style="width: 150px; height:40px; color: white;   background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Validate IntraDay LOg In ReSa Stage   " Value="Execute IntraDayValidation" onClick="Batch3()">
+</td>
+<p style="color:blue;">  Day 2 Batches </p>
+<td align="center">
+<input style="width: 150px; height:40px; color: white;  background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Validate EOD POSLog   " Value="Execute EOD POSLog" onClick="Batch4()">
+</td>
+
+
+<td align="center">
+<input style="width: 150px; height:40px; color: white;  background-color: #4CAF50; border-radius:  12px;
+font-family:Book Antiqua;" type="button" title=" Generate Final Report "Value="Generate Consolidated Report" onClick="Batch5()">
+</td>
+</tr>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+	  <h2> Update Test DataSheet</h2>
+	  
+	    <p><a href="file://C:/Intel/AutomationProject/DigitalE2E/Digital-E2EUAT-Selenium-na/src/test/resources/Datatables" >Update DataSheet</a></p>
+	    <h2>Results</h2>
+	       <p><a href="file:////cifs_public/public/00016_public/UATResults" >Go to Result folder</a></p>
+		   
+		
+		  
+    </div>
+    <div class="span10" align="left">
+      <!--Body content-->
+	  <b>Batch Execution Instructions</b>
+	 <table  border="0"> <tr>
+	 <!--th> Batch Name and Exection Timings</th-->
+	  
+	 <tr>
+	 <td><p style="font-size:10px;" align="left"><strong>Execute OrderCreation </strong> </p> </td>	
+	   </tr>
+	 
+	   <tr> 
+	   <td><p style="font-size:10px;  color: blue	" align="left"><strong>WAIT For 30 Minute :</strong> before executing Order Fulfillment Batch</p>
+	  	
+	  </tr> </td>
+	    <tr><td><p style="font-size:10px;color: blue;" align="left"> <strong>WAIT For 1 hours:</strong>  before executing Order  ATGCSC Validation Batch</p>
+	  </tr> </td>
+	   <tr> <td><p style="font-size:10px;color: blue	;" align="left"><strong>WAIT For 1 hours:</strong>before executing Order  RMSValidation Validation Batch</p>
+	  </tr> </td>
+	  <tr>  <td><p style="font-size:10px;color: blue	;" align="left"><strong></strong>ExternalSys Can be triggered after RMSValidation  Batch</p>
+	  </tr> </td>
+	  <tr>  <td><p style="font-size:10px;color: blue	;" align="left"><strong> WAIT for 1 Hours after RMSValidation :</strong> before executing Order  RIntraDayValidation Validation Batch </p> </td>
+ </tr>
+  <tr><td> <p style="font-size:10px;color: blue	;" align="left"> <strong>Next Day</strong> execute EOD POSLog Batch Next Day </p></td>
+ </tr>
+  <tr><td> <p style="font-size:10px;color: blue	;"align="left"><strong></strong> execute after EOD POSLog Batch exuction</p></td>
+	  </tr></table>
+ 
+
+
+    </div>
+  </div>
+</div>
+
+
+</body >
+
+</html>

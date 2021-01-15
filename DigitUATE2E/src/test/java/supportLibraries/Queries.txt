@@ -1,0 +1,97 @@
+Select a.order_no, a.insert_date_ts, a.last_upd_id, a.replication_datetime, a.supplier, a.factory, a.requestedindc,
+a.originalindc, a.requesedtinstore, a.originalinstore, a.*
+from RMS.XLLL_ST_XORDER_HEAD a
+where a.ORDER_NO in ('093007', '093009')
+and a.STATUS = 'CFM' order by a.last_upd_datetime desc;
+
+Select a.order_key, a.order_no, a.insert_date_ts, a.*
+from XLLL_ST_XORDER_DETAIL a
+where a.ORDER_NO in ('093007', '093009')--, '051484', '051486')
+order by a.insert_date_ts desc;
+
+Select * from RMS.XLLL_ST_XORDER_PROCESS_LOG where ORDER_NO in ('093007', '093009')
+and BR_STATUS = 'CFM' order by processed_date desc; 
+
+
+Select a.order_no, a.insert_date_ts, a.last_upd_id, a.replication_datetime, a.supplier, a.factory, a.requestedindc,
+a.originalindc, a.requesedtinstore, a.originalinstore, a.*
+from RMS.XLLL_ST_XORDER_HEAD a
+where a.ORDER_NO in ('093047')
+and a.STATUS = 'CFM' order by a.last_upd_datetime desc;
+
+Select a.order_key, a.order_no, a.insert_date_ts, a.*
+from XLLL_ST_XORDER_DETAIL a
+where a.ORDER_NO in ('093047')--, '051484', '051486')
+order by a.insert_date_ts desc;
+
+Select * from RMS.XLLL_ST_XORDER_PROCESS_LOG where ORDER_NO in ('093047')
+and BR_STATUS = 'CFM' order by processed_date desc;
+
+Select distinct error_desc, key_id1, key_id3 from LLLRMSCST.XLLL_T_ITFERRLOG where KEY_ID1 in ('571391', '571387'
+
+
+[‎4/‎8/‎2019 3:36 PM]  Ramcharan SRP:  
+No Title 
+RMS Tables:
+
+ORDHEAD:
+
+select a.master_po_no, a.order_no, a.last_update_datetime, a.status, a.ship_method, a.buyer, a.supplier, d.sup_name_secondary,
+a.factory, a.not_before_date, a.not_after_date, b.code_desc, a.loc_type, a.location, c.wh_name, a.*
+from ORDHEAD a, code_detail b, wh c, sups d
+where a.ship_method = b.code
+and b.code_type = 'SHPM'
+and a.supplier = d.supplier
+and a.location = c.wh
+and a.master_po_no in ('093049')
+order by a.master_po_no;
+
+ORDHEAD_CFA_EXT:
+
+select order_no RMS_PO, 
+group_id       GROUP_ID,
+DATE_21     REQUESTED_IN_DC,
+DATE_22     ORIGINAL_IN_DC,
+DATE_23     REQUESTED_IN_STORE,
+DATE_24     ORIGINAL_IN_STORE,
+DATE_25     CURRENT_IN_DC,
+VARCHAR2_4 SEASON,
+VARCHAR2_3 DELIVERY_GROUP
+from ORDHEAD_CFA_EXT x
+where x.group_id in (2, 3)
+and order_no in ('2057059');
+
+ORDLOC:
+
+select b.diff_1, a.*
+from ORDLOC a, item_master b
+where a.item = b.item
+--and a.order_no in ('1802027', '1802028', '1802029', '1802030', '1797073', '1797074');
+--and a.order_no in ('1822056', '1822050', '1822051', '1822052', '1822055', '1822054');
+--and a.order_no in ('1807044', '1807045', '1807046', '1807047');
+and a.order_no in ('1977056')
+order by a.order_no; 
+ 
+
+ORDSKU:
+
+select b.diff_1, c.master_po_no, a.*
+from ORDSKU a, item_master b, ordhead c
+where a.item = b.item
+--and a.order_no in ('1802027', '1802028', '1802029', '1802030', '1797073', '1797074');
+--and a.order_no in ('1822056', '1822050', '1822051', '1822052', '1822055', '1822054');
+--and a.order_no in ('1807044', '1807045', '1807046', '1807047');
+and a.order_no = c.order_no
+and a.order_no in ('1977056');
+  
+SHIPMENT & SHIPSKU:
+
+select a.order_no, b.carton, b.item, b.qty_received, b.qty_expected, a.*
+from SHIPMENT a, SHIPSKU b, item_master c
+where a.shipment = b.shipment
+and b.item = c.item
+--and a.order_no in ('1802027', '1802028', '1802029', '1802030', '1797073', '1797074')
+--and a.order_no in ('1822056', '1822050', '1822051', '1822052', '1822055', '1822054')
+--and a.order_no in ('1807044', '1807045', '1807046', '1807047')
+and a.order_no in ('1977056')
+order by asn; 

@@ -1,0 +1,13 @@
+/Results
+**/test-output
+**/target
+
+debug.log
+target
+/sshkey
+/sshkey.pub
+/deployKey.pub
+/deployKey.pub.pub
+/BOMCalcuation.txt
+/cookie.file
+/bin/

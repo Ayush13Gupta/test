@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="firstcraftTest" parallel="methods">
+  <test  name="Flipcart" >
+    <classes>
+      <class name="testscripts.FlipcartSmoke">
+      <methods>				
+					 <include name="tC_FlipcartLogin"></include>
+					 <!-- <include name="TC_PasswordReset"></include>
+				     <include name="TC_FlipcartLinktext"></include>
+				     <include name="TC_FlipcartAddcart"></include>-->
+				</methods>
+			</class>
+    </classes>
+  </test> <!-- Flipcart -->
+</suite> <!-- firstcraftTest -->
